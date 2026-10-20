@@ -54,6 +54,30 @@ nav ul a:hover{color:var(--accent)}
 .hero-wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
 .photo{justify-self:center;padding:6px;border-radius:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 20px 60px rgba(139,92,246,.3)}
 .photo img{display:block;width:100%;max-width:340px;height:auto;border-radius:23px;object-fit:cover}
+/* intro splash */
+#intro{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px;
+  background:radial-gradient(circle at 20% 15%,rgba(139,92,246,.28),transparent 45%),radial-gradient(circle at 80% 85%,rgba(77,225,255,.2),transparent 45%),var(--bg);
+  transition:opacity .8s ease,visibility .8s,transform .8s ease}
+#intro.hide{opacity:0;visibility:hidden;transform:scale(1.04)}
+.i-photo{position:relative;width:170px;height:170px;border-radius:50%;padding:5px;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent));animation:spin 3s linear infinite, pop .8s cubic-bezier(.2,1.4,.4,1) both}
+.i-photo img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid var(--bg);animation:unspin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes unspin{to{transform:rotate(-360deg)}}
+@keyframes pop{from{opacity:0;scale:.4}to{opacity:1;scale:1}}
+.i-hello{margin-top:26px;color:var(--accent);letter-spacing:.3em;text-transform:uppercase;font-size:.8rem;opacity:0;animation:up .6s .5s ease forwards}
+.i-name{font-size:clamp(2rem,7vw,3.6rem);font-weight:800;line-height:1.15;margin-top:6px;opacity:0;animation:up .7s .7s ease forwards}
+.i-role{color:var(--muted);margin-top:8px;opacity:0;animation:up .6s 1s ease forwards}
+.i-skills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:520px;margin-top:26px}
+.i-skills span{padding:6px 14px;border-radius:999px;font-size:.85rem;background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.35);opacity:0;transform:translateY(14px) scale(.9);animation:chip .5s ease forwards}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes chip{to{opacity:1;transform:none}}
+.i-bar{width:min(320px,70vw);height:4px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:34px;overflow:hidden}
+.i-bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));animation:load 3.8s .1s ease-in-out forwards}
+@keyframes load{to{width:100%}}
+.i-skip{position:absolute;top:20px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);padding:7px 16px;border-radius:99px;cursor:pointer;font:inherit;font-size:.85rem;transition:.2s}
+.i-skip:hover{color:var(--accent);border-color:var(--accent)}
+body.intro-lock{overflow:hidden}
 /* animations */
 #bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--accent),var(--accent2))}
@@ -77,6 +101,8 @@ nav ul a.active{color:var(--accent)}
   *{animation:none !important;transition:none !important}
   .reveal,.grid>.card,.tags .tag,.timeline .item{opacity:1 !important;transform:none !important}
   #bg{display:none}
+  #intro *{opacity:1 !important;transform:none !important;scale:1 !important}
+  .i-bar i{width:100% !important}
 }
 /* cards */
 .grid{display:grid;gap:20px}
@@ -136,7 +162,24 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);co
 }
 </style>
 </head>
-<body>
+<body class="intro-lock">
+<div id="intro" role="dialog" aria-label="Welcome">
+  <button class="i-skip" id="skipIntro" type="button">Skip ›</button>
+  <div class="i-photo"><img src="assets/photo.jpg" alt="Sajidur Rahman" width="160" height="160"></div>
+  <div class="i-hello">Welcome, I'm</div>
+  <div class="i-name grad">Sajidur Rahman</div>
+  <div class="i-role">CSE Student · Daffodil International University</div>
+  <div class="i-skills">
+    <span style="animation-delay:1.2s">Python</span>
+    <span style="animation-delay:1.4s">Java</span>
+    <span style="animation-delay:1.6s">JavaScript</span>
+    <span style="animation-delay:1.8s">React</span>
+    <span style="animation-delay:2s">MySQL</span>
+    <span style="animation-delay:2.2s">Git &amp; GitHub</span>
+    <span style="animation-delay:2.4s">Problem Solving</span>
+  </div>
+  <div class="i-bar"><i></i></div>
+</div>
 <canvas id="bg"></canvas>
 <div id="progress"></div>
 
@@ -351,6 +394,25 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);co
     const body = encodeURIComponent(f.get('message') + '\n\n- ' + f.get('name') + ' (' + f.get('email') + ')');
     location.href = 'mailto:iamsajid0010@gmail.com?subject=' + encodeURIComponent(f.get('subject') || 'Portfolio message') + '&body=' + body;
   });
+
+  // intro splash: plays once per browser session, then reveals the site
+  (function(){
+    const intro=document.getElementById('intro');
+    let seen=false;
+    try{seen=sessionStorage.getItem('introSeen')==='1'}catch(e){}
+    function finish(){
+      if(intro.classList.contains('hide'))return;
+      intro.classList.add('hide');
+      document.body.classList.remove('intro-lock');
+      try{sessionStorage.setItem('introSeen','1')}catch(e){}
+      setTimeout(()=>intro.remove(),900);
+    }
+    if(seen){intro.remove();document.body.classList.remove('intro-lock');return;}
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTimeout(finish,reduce?1200:4300);
+    document.getElementById('skipIntro').addEventListener('click',finish);
+    addEventListener('keydown',e=>{if(e.key==='Escape')finish()});
+  })();
 
   // typing effect
   (function(){

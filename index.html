@@ -143,6 +143,7 @@ nav ul a.nav-cta:hover{background:var(--cta-hover)}
 .grid{display:grid;gap:18px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.gp{grid-template-columns:repeat(2,1fr)}
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:var(--card-shadow);transition:border-color .25s,background .25s,transform .25s}
 .card:hover{border-color:var(--hover-bd);background:var(--card-hi)}
 .card h3{font-size:1.05rem;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
@@ -172,6 +173,9 @@ nav ul a.nav-cta:hover{background:var(--cta-hover)}
 .stack{display:flex;flex-wrap:wrap;gap:8px}
 .stack span{font-family:var(--mono);font-size:.74rem;color:var(--accent);border:1px solid var(--chip-bd);padding:3px 11px;border-radius:99px}
 
+.plink{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:.9rem;font-weight:500;margin-top:16px;align-self:flex-start}
+.plink:hover{text-decoration:underline}
+.plink .ic{width:16px;height:16px}
 /* timeline */
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px}
 .col-title{font-size:.8rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
@@ -272,6 +276,7 @@ body.intro-lock{overflow:hidden}
   section{padding:72px 0}
   .container{padding:0 20px}
   .form-row{grid-template-columns:1fr}
+  .gp{grid-template-columns:1fr}
   .award{flex-direction:column;gap:16px}
   .badge{display:none}
   .portrait{max-width:220px}
@@ -370,7 +375,7 @@ body.intro-lock{overflow:hidden}
     </div>
 
     <div class="stats reveal">
-      <div class="stat rv"><b class="grad">3</b><span>Projects built</span></div>
+      <div class="stat rv"><b class="grad">4</b><span>Projects built</span></div>
       <div class="stat rv"><b class="grad">2</b><span>Club roles at DIU</span></div>
       <div class="stat rv"><b class="grad">1st</b><span>Runner-up, AI Dev Fest 2026</span></div>
       <div class="stat rv"><b class="grad">3</b><span>Languages spoken</span></div>
@@ -437,7 +442,7 @@ body.intro-lock{overflow:hidden}
     <div class="rv"><div class="eyebrow">03 &middot; Projects</div>
     <h2>Selected work</h2>
     <p class="sub">Academic and personal projects that apply what I've learned to real problems.</p></div>
-    <div class="grid g3">
+    <div class="grid gp">
       <article class="card proj rv">
         <div class="num">01</div>
         <h3>Hotel Management System</h3>
@@ -455,6 +460,13 @@ body.intro-lock{overflow:hidden}
         <h3>Hospital Emergency Queue Management</h3>
         <p>Manages patient queues in a hospital emergency department, prioritizing cases by urgency and tracking waiting status.</p>
         <div class="stack"><span>Queues</span><span>Priority scheduling</span></div>
+      </article>
+      <article class="card proj rv">
+        <div class="num">04</div>
+        <h3>Personal Portfolio Website</h3>
+        <p>The site you're viewing: a responsive, multi-section portfolio I designed and built from scratch, with an animated intro, light and dark themes, and a contact form. Hosted on GitHub Pages.</p>
+        <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div>
+        <a class="plink" href="https://github.com/iamsajid0010/iamsajid0010.github.io" target="_blank" rel="noopener"><svg class="ic fill"><use href="#i-gh"/></svg>View source on GitHub</a>
       </article>
     </div>
   </div>

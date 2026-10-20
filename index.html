@@ -55,28 +55,36 @@ nav ul a:hover{color:var(--accent)}
 .photo{justify-self:center;padding:6px;border-radius:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 20px 60px rgba(139,92,246,.3)}
 .photo img{display:block;width:100%;max-width:340px;height:auto;border-radius:23px;object-fit:cover}
 /* intro splash */
-#intro{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px;
-  background:radial-gradient(circle at 20% 15%,rgba(139,92,246,.28),transparent 45%),radial-gradient(circle at 80% 85%,rgba(77,225,255,.2),transparent 45%),var(--bg);
-  transition:opacity .8s ease,visibility .8s,transform .8s ease}
-#intro.hide{opacity:0;visibility:hidden;transform:scale(1.04)}
-.i-photo{position:relative;width:170px;height:170px;border-radius:50%;padding:5px;
-  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent));animation:spin 3s linear infinite, pop .8s cubic-bezier(.2,1.4,.4,1) both}
-.i-photo img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid var(--bg);animation:unspin 3s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes unspin{to{transform:rotate(-360deg)}}
-@keyframes pop{from{opacity:0;scale:.4}to{opacity:1;scale:1}}
-.i-hello{margin-top:26px;color:var(--accent);letter-spacing:.3em;text-transform:uppercase;font-size:.8rem;opacity:0;animation:up .6s .5s ease forwards}
-.i-name{font-size:clamp(2rem,7vw,3.6rem);font-weight:800;line-height:1.15;margin-top:6px;opacity:0;animation:up .7s .7s ease forwards}
-.i-role{color:var(--muted);margin-top:8px;opacity:0;animation:up .6s 1s ease forwards}
-.i-skills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:520px;margin-top:26px}
-.i-skills span{padding:6px 14px;border-radius:999px;font-size:.85rem;background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.35);opacity:0;transform:translateY(14px) scale(.9);animation:chip .5s ease forwards}
-@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes chip{to{opacity:1;transform:none}}
-.i-bar{width:min(320px,70vw);height:4px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:34px;overflow:hidden}
-.i-bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));animation:load 3.8s .1s ease-in-out forwards}
-@keyframes load{to{width:100%}}
-.i-skip{position:absolute;top:20px;right:20px;background:none;border:1px solid var(--border);color:var(--muted);padding:7px 16px;border-radius:99px;cursor:pointer;font:inherit;font-size:.85rem;transition:.2s}
+#intro{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;overflow:hidden;
+  background:var(--bg);transition:transform 1s cubic-bezier(.77,0,.18,1)}
+#intro::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 15%,transparent 70%);mask-image:radial-gradient(ellipse at center,#000 15%,transparent 70%);
+  animation:fade 1.2s ease both}
+#intro::after{content:"";position:absolute;width:560px;height:560px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(139,92,246,.22),transparent 65%);filter:blur(30px);animation:fade 1.6s ease both}
+#intro.hide{transform:translateY(-100%)}
+#intro>*{position:relative;z-index:1}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.i-photo{width:124px;height:124px;border-radius:50%;padding:4px;border:1px solid rgba(77,225,255,.45);box-shadow:0 0 50px rgba(77,225,255,.18);
+  opacity:0;animation:rise .9s .15s cubic-bezier(.2,.8,.2,1) forwards}
+.i-photo img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 20%}
+.i-name{overflow:hidden;margin-top:30px;padding:4px 0 8px}
+.i-name span{display:block;font-size:clamp(2.2rem,8vw,4.2rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;transform:translateY(110%);animation:slide .9s .55s cubic-bezier(.2,.8,.2,1) forwards}
+.i-line{height:1px;width:0;margin:6px auto 0;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);animation:grow 1s 1.1s ease forwards}
+.i-role{margin-top:20px;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);opacity:0;animation:rise .8s 1.3s ease forwards}
+.i-skills{margin-top:16px;color:var(--text);font-size:.95rem;opacity:0;animation:rise .8s 1.7s ease forwards}
+.i-skills i{font-style:normal;color:var(--accent);margin:0 10px}
+.i-foot{position:absolute !important;left:0;right:0;bottom:0;padding:0 clamp(20px,4vw,44px) 30px;display:flex;justify-content:space-between;align-items:flex-end;color:var(--muted);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;opacity:0;animation:fade .8s .4s ease forwards}
+.i-count{font-size:clamp(2.4rem,7vw,4rem);font-weight:200;letter-spacing:-.02em;color:var(--text);font-variant-numeric:tabular-nums;line-height:1}
+.i-count small{font-size:.35em;color:var(--accent);margin-left:4px;letter-spacing:.1em}
+.i-bar{position:absolute !important;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.i-skip{position:absolute !important;top:22px;right:22px;background:none;border:1px solid var(--border);color:var(--muted);padding:7px 16px;border-radius:99px;cursor:pointer;font:inherit;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;transition:.2s;z-index:3}
 .i-skip:hover{color:var(--accent);border-color:var(--accent)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes slide{to{transform:none}}
+@keyframes grow{to{width:min(300px,60vw)}}
 body.intro-lock{overflow:hidden}
 /* animations */
 #bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
@@ -101,8 +109,8 @@ nav ul a.active{color:var(--accent)}
   *{animation:none !important;transition:none !important}
   .reveal,.grid>.card,.tags .tag,.timeline .item{opacity:1 !important;transform:none !important}
   #bg{display:none}
-  #intro *{opacity:1 !important;transform:none !important;scale:1 !important}
-  .i-bar i{width:100% !important}
+  #intro *,#intro::before,#intro::after{opacity:1 !important;transform:none !important}
+  .i-line{width:200px !important}
 }
 /* cards */
 .grid{display:grid;gap:20px}
@@ -164,21 +172,15 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);co
 </head>
 <body class="intro-lock">
 <div id="intro" role="dialog" aria-label="Welcome">
-  <button class="i-skip" id="skipIntro" type="button">Skip ›</button>
-  <div class="i-photo"><img src="assets/photo.jpg" alt="Sajidur Rahman" width="160" height="160"></div>
-  <div class="i-hello">Welcome, I'm</div>
-  <div class="i-name grad">Sajidur Rahman</div>
-  <div class="i-role">CSE Student · Daffodil International University</div>
-  <div class="i-skills">
-    <span style="animation-delay:1.2s">Python</span>
-    <span style="animation-delay:1.4s">Java</span>
-    <span style="animation-delay:1.6s">JavaScript</span>
-    <span style="animation-delay:1.8s">React</span>
-    <span style="animation-delay:2s">MySQL</span>
-    <span style="animation-delay:2.2s">Git &amp; GitHub</span>
-    <span style="animation-delay:2.4s">Problem Solving</span>
-  </div>
-  <div class="i-bar"><i></i></div>
+  <button class="i-skip" id="skipIntro" type="button">Skip</button>
+  <div class="i-photo"><img src="assets/photo.jpg" alt="Sajidur Rahman" width="116" height="116"></div>
+  <div class="i-name"><span class="grad">Sajidur Rahman</span></div>
+  <div class="i-line"></div>
+  <div class="i-role">Computer Science &amp; Engineering</div>
+  <div class="i-skills">Python<i>/</i>Java<i>/</i>JavaScript<i>/</i>React<i>/</i>MySQL</div>
+  <div class="i-foot"><div>Portfolio &middot; 2026</div><div class="i-count"><span id="introNum">0</span><small>%</small></div></div>
+  <div class="i-bar" id="introBar"></div>
+</div>
 </div>
 <canvas id="bg"></canvas>
 <div id="progress"></div>
@@ -395,7 +397,7 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);co
     location.href = 'mailto:iamsajid0010@gmail.com?subject=' + encodeURIComponent(f.get('subject') || 'Portfolio message') + '&body=' + body;
   });
 
-  // intro splash: plays once per browser session, then reveals the site
+  // intro splash: plays once per browser session, then slides up to reveal the site
   (function(){
     const intro=document.getElementById('intro');
     let seen=false;
@@ -405,11 +407,18 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);co
       intro.classList.add('hide');
       document.body.classList.remove('intro-lock');
       try{sessionStorage.setItem('introSeen','1')}catch(e){}
-      setTimeout(()=>intro.remove(),900);
+      setTimeout(()=>intro.remove(),1100);
     }
     if(seen){intro.remove();document.body.classList.remove('intro-lock');return;}
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTimeout(finish,reduce?1200:4300);
+    const num=document.getElementById('introNum'),bar=document.getElementById('introBar');
+    const DUR=reduce?600:3400,t0=performance.now();
+    (function step(now){
+      const t=Math.min(1,(now-t0)/DUR),e=1-Math.pow(1-t,2.2);
+      num.textContent=Math.round(e*100);bar.style.width=(e*100)+'%';
+      if(t<1&&!intro.classList.contains('hide'))requestAnimationFrame(step);
+      else if(t>=1)setTimeout(finish,350);
+    })(t0);
     document.getElementById('skipIntro').addEventListener('click',finish);
     addEventListener('keydown',e=>{if(e.key==='Escape')finish()});
   })();

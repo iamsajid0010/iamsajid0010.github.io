@@ -6,6 +6,8 @@
 <title>Sajidur Rahman | Computer Science &amp; Engineering Student</title>
 <meta name="description" content="Sajidur Rahman is a Computer Science & Engineering student at Daffodil International University, focused on software development, web technologies and AI-driven applications. Open to internships.">
 <meta name="theme-color" content="#0a0e1a">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
+<noscript><style>.rv,.h-in{opacity:1!important;transform:none!important}#intro{display:none!important}body.intro-lock{overflow:auto!important}</style></noscript>
 <link rel="canonical" href="https://iamsajid0010.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234de1ff'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230a0e1a'/%3E%3Crect x='2' y='2' width='60' height='60' rx='12' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' text-anchor='middle' fill='url(%23g)'%3ESR%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="Sajidur Rahman | Computer Science & Engineering Student">
@@ -22,16 +24,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
+  color-scheme:dark;
   --bg:#0a0e1a; --bg2:#0f1526; --card:rgba(255,255,255,.035); --card-hi:rgba(255,255,255,.06);
   --border:rgba(255,255,255,.09); --text:#e8ebf3; --muted:#9aa4ba; --dim:#6f7a92;
-  --accent:#4de1ff; --accent2:#8b5cf6;
+  --accent:#4de1ff; --accent2:#8b5cf6; --on-accent:#06101c;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --page-glow:radial-gradient(circle at 12% 8%,rgba(139,92,246,.14),transparent 40%),radial-gradient(circle at 88% 28%,rgba(77,225,255,.09),transparent 40%);
+  --nav-bg:rgba(10,14,26,.78); --glass:rgba(15,21,38,.9);
+  --hover-bd:rgba(77,225,255,.35); --cta-bd:rgba(77,225,255,.45); --cta-hover:rgba(77,225,255,.1);
+  --ring:rgba(77,225,255,.22); --chip-bd:rgba(77,225,255,.28);
+  --tag-bg:rgba(139,92,246,.1); --tag-bd:rgba(139,92,246,.28); --tag-tx:#d9d2f7; --tag-hover:rgba(139,92,246,.24);
+  --soft-bg:rgba(77,225,255,.06); --soft-bd:rgba(77,225,255,.22); --soft-tx:#c3f0fb;
+  --ok-tx:#7ee2a0; --ok-bg:rgba(74,222,128,.06); --ok-bd:rgba(74,222,128,.35);
+  --input-bg:rgba(255,255,255,.03); --input-focus:rgba(77,225,255,.04);
+  --photo-shadow:0 30px 70px rgba(0,0,0,.5),0 0 90px rgba(139,92,246,.18); --shadow:0 14px 40px rgba(0,0,0,.4);
+  --card-shadow:none;
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#f5f7fb; --bg2:#ffffff; --card:#ffffff; --card-hi:#f1f5f9;
+  --border:rgba(15,23,42,.1); --text:#0f172a; --muted:#475569; --dim:#64748b;
+  --accent:#0369a1; --accent2:#6d4ad8; --on-accent:#ffffff;
+  --page-glow:radial-gradient(circle at 10% 5%,rgba(109,74,216,.08),transparent 40%),radial-gradient(circle at 90% 25%,rgba(3,105,161,.07),transparent 40%);
+  --nav-bg:rgba(245,247,251,.85); --glass:rgba(255,255,255,.94);
+  --hover-bd:rgba(3,105,161,.4); --cta-bd:rgba(3,105,161,.5); --cta-hover:rgba(3,105,161,.08);
+  --ring:rgba(3,105,161,.25); --chip-bd:rgba(3,105,161,.3);
+  --tag-bg:rgba(109,74,216,.08); --tag-bd:rgba(109,74,216,.25); --tag-tx:#4c3a9e; --tag-hover:rgba(109,74,216,.16);
+  --soft-bg:rgba(3,105,161,.07); --soft-bd:rgba(3,105,161,.25); --soft-tx:#075985;
+  --ok-tx:#15803d; --ok-bg:rgba(22,163,74,.08); --ok-bd:rgba(22,163,74,.35);
+  --input-bg:#ffffff; --input-focus:#f0f9ff;
+  --photo-shadow:0 24px 60px rgba(15,23,42,.18),0 0 0 6px #fff; --shadow:0 12px 32px rgba(15,23,42,.14);
+  --card-shadow:0 1px 2px rgba(15,23,42,.05),0 10px 28px rgba(15,23,42,.05);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
 body{font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(circle at 12% 8%,rgba(139,92,246,.14),transparent 40%),radial-gradient(circle at 88% 28%,rgba(77,225,255,.09),transparent 40%);
-  background-attachment:fixed}
+  background-image:var(--page-glow);
+  background-attachment:fixed;transition:background-color .3s,color .3s}
+::selection{background:rgba(77,225,255,.28)}
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
 .container{max-width:1080px;margin:0 auto;padding:0 24px}
@@ -50,24 +80,31 @@ h2{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:700;letter-spacing:-.02em;line
 .sub{color:var(--muted);max-width:600px;margin-bottom:44px}
 
 /* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,14,26,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 nav .container{display:flex;justify-content:space-between;align-items:center;height:64px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em}
-.logo b{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;font-size:.78rem;font-weight:800;color:#06101c;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.logo b{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;font-size:.78rem;font-weight:800;color:var(--on-accent);background:linear-gradient(135deg,var(--accent),var(--accent2))}
 nav ul{display:flex;gap:6px;list-style:none;align-items:center}
 nav ul a{color:var(--muted);font-size:.9rem;padding:8px 12px;border-radius:8px;transition:color .2s,background .2s}
 nav ul a:hover{color:var(--text);background:var(--card-hi)}
 nav ul a.active{color:var(--accent)}
-nav ul a.nav-cta{margin-left:8px;border:1px solid rgba(77,225,255,.45);color:var(--accent);display:flex;align-items:center;gap:8px}
-nav ul a.nav-cta:hover{background:rgba(77,225,255,.1)}
+nav ul a.nav-cta{margin-left:8px;border:1px solid var(--cta-bd);color:var(--accent);display:flex;align-items:center;gap:8px}
+nav ul a.nav-cta:hover{background:var(--cta-hover)}
 .menu-btn{display:none;background:none;border:1px solid var(--border);color:var(--text);width:40px;height:40px;border-radius:10px;cursor:pointer;align-items:center;justify-content:center}
 #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.7}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.5}
 
+.nav-right{display:flex;align-items:center;gap:8px}
+.theme-btn{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:.2s}
+.theme-btn:hover{color:var(--accent);border-color:var(--hover-bd);background:var(--card-hi)}
+:root[data-theme="dark"] .theme-btn .moon,:root[data-theme="light"] .theme-btn .sun{display:none}
+.meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--dim);font-size:.88rem;margin-top:14px}
+.meta .ic{width:16px;height:16px;color:var(--accent)}
+.meta .dot{opacity:.5}
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;font-family:inherit;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
 .btn:hover{transform:translateY(-2px);border-color:rgba(77,225,255,.5);background:var(--card-hi)}
-.btn.primary{border:none;color:#06101c;background:linear-gradient(90deg,var(--accent),var(--accent2));background-size:200% 100%;background-position:0 0;transition:background-position .4s,transform .2s,box-shadow .2s}
+.btn.primary{border:none;color:var(--on-accent);background:linear-gradient(90deg,var(--accent),var(--accent2));background-size:200% 100%;background-position:0 0;transition:background-position .4s,transform .2s,box-shadow .2s}
 .btn.primary:hover{background-position:100% 0;box-shadow:0 10px 28px rgba(77,225,255,.2)}
 .icon-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:10px;border:1px solid var(--border);color:var(--muted);transition:.2s}
 .icon-btn:hover{color:var(--accent);border-color:rgba(77,225,255,.5);transform:translateY(-2px);background:var(--card-hi)}
@@ -76,7 +113,7 @@ nav ul a.nav-cta:hover{background:rgba(77,225,255,.1)}
 /* hero */
 #hero{min-height:100vh;display:flex;align-items:center;padding:110px 0 70px}
 .hero-wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center}
-.status{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border:1px solid rgba(74,222,128,.35);border-radius:999px;font-size:.82rem;color:#7ee2a0;background:rgba(74,222,128,.06);margin-bottom:26px}
+.status{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border:1px solid var(--ok-bd);border-radius:999px;font-size:.82rem;color:var(--ok-tx);background:var(--ok-bg);margin-bottom:26px}
 .status::before{content:"";width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 1.8s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}100%{box-shadow:0 0 0 10px rgba(74,222,128,0)}}
 .kicker{font-family:var(--mono);color:var(--muted);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
@@ -88,9 +125,9 @@ nav ul a.nav-cta:hover{background:rgba(77,225,255,.1)}
 .btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px}
 .socials{display:flex;gap:10px}
 .portrait{position:relative;justify-self:center;width:100%;max-width:360px}
-.portrait::before{content:"";position:absolute;inset:-14px;border-radius:30px;border:1px solid rgba(77,225,255,.22);transform:translate(14px,14px);pointer-events:none}
-.portrait img{position:relative;display:block;width:100%;height:auto;aspect-ratio:5/6;object-fit:cover;object-position:50% 18%;border-radius:22px;border:1px solid var(--border);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 90px rgba(139,92,246,.18)}
-.badge{position:absolute;left:-18px;bottom:28px;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:rgba(15,21,38,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);box-shadow:0 14px 40px rgba(0,0,0,.4)}
+.portrait::before{content:"";position:absolute;inset:-14px;border-radius:30px;border:1px solid var(--ring);transform:translate(14px,14px);pointer-events:none}
+.portrait img{position:relative;display:block;width:100%;height:auto;aspect-ratio:5/6;object-fit:cover;object-position:50% 18%;border-radius:22px;border:1px solid var(--border);box-shadow:var(--photo-shadow)}
+.badge{position:absolute;left:-18px;bottom:28px;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border);box-shadow:var(--shadow)}
 .badge .ic{width:22px;height:22px;color:var(--accent)}
 .badge small{display:block;color:var(--dim);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;line-height:1.2}
 .badge span{font-size:.88rem;font-weight:600;line-height:1.3;display:block}
@@ -106,8 +143,8 @@ nav ul a.nav-cta:hover{background:rgba(77,225,255,.1)}
 .grid{display:grid;gap:18px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;transition:border-color .25s,background .25s,transform .25s}
-.card:hover{border-color:rgba(77,225,255,.35);background:var(--card-hi)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:var(--card-shadow);transition:border-color .25s,background .25s,transform .25s}
+.card:hover{border-color:var(--hover-bd);background:var(--card-hi)}
 .card h3{font-size:1.05rem;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .card p{color:var(--muted);font-size:.95rem}
 
@@ -124,16 +161,16 @@ nav ul a.nav-cta:hover{background:rgba(77,225,255,.1)}
 
 /* skills */
 .tags{display:flex;flex-wrap:wrap;gap:8px}
-.tag{padding:5px 13px;border-radius:8px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.28);font-size:.84rem;color:#d9d2f7;transition:background .2s,transform .2s}
-.tag:hover{background:rgba(139,92,246,.24);transform:translateY(-2px)}
-.tag.soft{background:rgba(77,225,255,.06);border-color:rgba(77,225,255,.22);color:#c3f0fb}
+.tag{padding:5px 13px;border-radius:8px;background:var(--tag-bg);border:1px solid var(--tag-bd);font-size:.84rem;color:var(--tag-tx);transition:background .2s,transform .2s}
+.tag:hover{background:var(--tag-hover);transform:translateY(-2px)}
+.tag.soft{background:var(--soft-bg);border-color:var(--soft-bd);color:var(--soft-tx)}
 
 /* projects */
 .proj{display:flex;flex-direction:column}
 .proj .num{font-family:var(--mono);color:var(--accent);font-size:.8rem;letter-spacing:.1em;margin-bottom:14px}
 .proj p{flex:1;margin-bottom:18px}
 .stack{display:flex;flex-wrap:wrap;gap:8px}
-.stack span{font-family:var(--mono);font-size:.74rem;color:var(--accent);border:1px solid rgba(77,225,255,.28);padding:3px 11px;border-radius:99px}
+.stack span{font-family:var(--mono);font-size:.74rem;color:var(--accent);border:1px solid var(--chip-bd);padding:3px 11px;border-radius:99px}
 
 /* timeline */
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px}
@@ -162,18 +199,17 @@ nav ul a.nav-cta:hover{background:rgba(77,225,255,.1)}
 .contact-list .row{color:var(--muted)}
 form{display:grid;gap:14px}
 label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px}
-input,textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--text);padding:12px 14px;border-radius:10px;font:inherit;font-size:.95rem;transition:border-color .2s,background .2s}
+input,textarea{width:100%;background:var(--input-bg);border:1px solid var(--border);color:var(--text);padding:12px 14px;border-radius:10px;font:inherit;font-size:.95rem;transition:border-color .2s,background .2s}
 input::placeholder,textarea::placeholder{color:var(--dim)}
-input:focus,textarea:focus{outline:none;border-color:var(--accent);background:rgba(77,225,255,.04)}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);background:var(--input-focus)}
 textarea{min-height:130px;resize:vertical}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
 footer{border-top:1px solid var(--border);padding:30px 0;color:var(--dim);font-size:.88rem}
 footer .container{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
-footer nav-links{display:flex}
 .foot-links{display:flex;gap:18px}
 .foot-links a:hover{color:var(--accent)}
-#toTop{position:fixed;right:22px;bottom:22px;z-index:40;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(15,21,38,.9);border:1px solid var(--border);color:var(--text);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:.3s}
+#toTop{position:fixed;right:22px;bottom:22px;z-index:40;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--glass);border:1px solid var(--border);color:var(--text);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:.3s}
 #toTop.show{opacity:1;visibility:visible;transform:none}
 #toTop:hover{color:var(--accent);border-color:rgba(77,225,255,.5)}
 
@@ -184,10 +220,9 @@ footer nav-links{display:flex}
 body.ready .h-in{animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d,0s)}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 body.ready .portrait{animation:rise 1s .25s cubic-bezier(.2,.8,.2,1) both}
-.portrait{animation:none}
 
 /* intro splash */
-#intro{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;overflow:hidden;
+#intro{--bg:#0a0e1a;--text:#e8ebf3;--muted:#9aa4ba;--accent:#4de1ff;--accent2:#8b5cf6;--border:rgba(255,255,255,.09);position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;overflow:hidden;
   background:var(--bg);transition:transform 1s cubic-bezier(.77,0,.18,1)}
 #intro::before{content:"";position:absolute;inset:0;pointer-events:none;
   background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
@@ -239,6 +274,7 @@ body.intro-lock{overflow:hidden}
   .form-row{grid-template-columns:1fr}
   .award{flex-direction:column;gap:16px}
   .badge{display:none}
+  .portrait{max-width:220px}
   .portrait::before{inset:-10px;transform:translate(10px,10px)}
 }
 @media(prefers-reduced-motion:reduce){
@@ -260,6 +296,8 @@ body.intro-lock{overflow:hidden}
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
   <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
   <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0V4z"/><path d="M8 6H5a1 1 0 0 0-1 1c0 2.2 1.6 4 4 4"/><path d="M16 6h3a1 1 0 0 1 1 1c0 2.2-1.6 4-4 4"/><path d="M12 13v4"/><path d="M8 21h8"/><path d="M9.5 17h5"/></symbol>
   <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.2V16c0 1.2 2.7 3 6 3s6-1.8 6-3v-4.8"/></symbol>
@@ -284,8 +322,8 @@ body.intro-lock{overflow:hidden}
 <nav aria-label="Main">
   <div class="container">
     <a href="#hero" class="logo" aria-label="Sajidur Rahman, home"><b>SR</b><span>Sajidur Rahman</span></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><svg class="ic"><use href="#i-menu"/></svg></button>
-    <ul id="menu">
+    <div class="nav-right">
+      <ul id="menu">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -294,6 +332,9 @@ body.intro-lock{overflow:hidden}
       <li><a href="#contact">Contact</a></li>
       <li><a class="nav-cta" href="assets/Sajidur_Rahman_CV.pdf" download><svg class="ic"><use href="#i-dl"/></svg>Resume</a></li>
     </ul>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch to light theme"><svg class="ic sun"><use href="#i-sun"/></svg><svg class="ic moon"><use href="#i-moon"/></svg></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><svg class="ic"><use href="#i-menu"/></svg></button>
+    </div>
   </div>
 </nav>
 
@@ -307,6 +348,7 @@ body.intro-lock{overflow:hidden}
         <div class="kicker h-in" style="--d:.15s">Computer Science &amp; Engineering Student</div>
         <h1 class="h-in" style="--d:.25s"><span class="grad">Sajidur Rahman</span></h1>
         <div class="typing h-in" style="--d:.35s" aria-live="off"><span id="typed"></span><span class="cursor"></span></div>
+        <div class="meta h-in" style="--d:.4s"><svg class="ic"><use href="#i-pin"/></svg>Dhaka, Bangladesh<span class="dot">·</span>Daffodil International University</div>
         <p class="lead h-in" style="--d:.45s">Motivated CSE student at Daffodil International University with hands-on experience in software development, web technologies and AI-driven applications.</p>
         <div class="btns h-in" style="--d:.55s">
           <a class="btn primary" href="assets/Sajidur_Rahman_CV.pdf" download><svg class="ic"><use href="#i-dl"/></svg>Download CV</a>
@@ -385,7 +427,7 @@ body.intro-lock{overflow:hidden}
         <div class="tags"><span class="tag soft">Bangla · Native</span><span class="tag soft">English · Professional working</span><span class="tag soft">Hindi</span></div></div>
     </div>
     <div class="card rv" style="margin-top:18px"><h3>Soft skills</h3>
-      <div class="tags"><span class="tag soft">Communication</span><span class="tag soft">Leadership</span><span class="tag soft">Teamwork</span><span class="tag soft">Time Management</span><span class="tag soft">Problem Solving</span><span class="tag soft">Adaptability</span><span class="tag soft">Customer Handling</span><span class="tag soft">Technical &amp; Office Documentation</span></div></div>
+      <div class="tags"><span class="tag soft">Communication</span><span class="tag soft">Leadership</span><span class="tag soft">Teamwork</span><span class="tag soft">Time Management</span><span class="tag soft">Adaptability</span><span class="tag soft">Customer Handling</span><span class="tag soft">Technical &amp; Office Documentation</span></div></div>
   </div>
 </section>
 
@@ -555,6 +597,22 @@ body.intro-lock{overflow:hidden}
     addEventListener('keydown',e=>{if(e.key==='Escape')finish()});
   })();
 
+  // theme toggle (saved in the visitor's browser)
+  (function(){
+    const root=document.documentElement,btn=document.getElementById('themeBtn'),meta=document.querySelector('meta[name="theme-color"]');
+    function apply(t){
+      root.dataset.theme=t;
+      meta.setAttribute('content',t==='light'?'#f5f7fb':'#0a0e1a');
+      btn.setAttribute('aria-label',t==='light'?'Switch to dark theme':'Switch to light theme');
+    }
+    btn.addEventListener('click',()=>{
+      const t=root.dataset.theme==='light'?'dark':'light';
+      apply(t);
+      try{localStorage.setItem('theme',t)}catch(e){}
+    });
+    apply(root.dataset.theme||'dark');
+  })();
+
   // typing effect
   (function(){
     const words=['Software Developer','AI Enthusiast','Problem Solver','Web Developer'];
@@ -587,19 +645,20 @@ body.intro-lock{overflow:hidden}
     addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
     function draw(){
       x.clearRect(0,0,W,H);
+      const light=document.documentElement.dataset.theme==='light';
       for(const p of pts){
         p.x+=p.vx;p.y+=p.vy;
         if(p.x<0||p.x>W)p.vx*=-1;
         if(p.y<0||p.y>H)p.vy*=-1;
-        x.beginPath();x.arc(p.x,p.y,1.5,0,6.283);x.fillStyle='rgba(77,225,255,.6)';x.fill();
+        x.beginPath();x.arc(p.x,p.y,1.5,0,6.283);x.fillStyle=light?'rgba(3,105,161,.55)':'rgba(77,225,255,.6)';x.fill();
       }
       for(let a=0;a<pts.length;a++){
         for(let b=a+1;b<pts.length;b++){
           const dx=pts[a].x-pts[b].x,dy=pts[a].y-pts[b].y,d=Math.hypot(dx,dy);
-          if(d<120){x.strokeStyle='rgba(139,92,246,'+(.22*(1-d/120))+')';x.beginPath();x.moveTo(pts[a].x,pts[a].y);x.lineTo(pts[b].x,pts[b].y);x.stroke();}
+          if(d<120){x.strokeStyle=(light?'rgba(109,74,216,':'rgba(139,92,246,')+(.22*(1-d/120))+')';x.beginPath();x.moveTo(pts[a].x,pts[a].y);x.lineTo(pts[b].x,pts[b].y);x.stroke();}
         }
         const mx=pts[a].x-mouse.x,my=pts[a].y-mouse.y,md=Math.hypot(mx,my);
-        if(md<150){x.strokeStyle='rgba(77,225,255,'+(.3*(1-md/150))+')';x.beginPath();x.moveTo(pts[a].x,pts[a].y);x.lineTo(mouse.x,mouse.y);x.stroke();}
+        if(md<150){x.strokeStyle=(light?'rgba(3,105,161,':'rgba(77,225,255,')+(.3*(1-md/150))+')';x.beginPath();x.moveTo(pts[a].x,pts[a].y);x.lineTo(mouse.x,mouse.y);x.stroke();}
       }
       if(!document.hidden)requestAnimationFrame(draw);
     }

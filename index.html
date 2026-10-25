@@ -176,6 +176,7 @@ nav ul a.nav-cta:hover{background:var(--cta-hover)}
 .plink{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:.9rem;font-weight:500;margin-top:16px;align-self:flex-start}
 .plink:hover{text-decoration:underline}
 .plink .ic{width:16px;height:16px}
+.plinks{display:flex;flex-wrap:wrap;gap:0 22px}
 /* timeline */
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px}
 .col-title{font-size:.8rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
@@ -300,6 +301,7 @@ body.intro-lock{overflow:hidden}
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6.5L20.5 7"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
   <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
@@ -375,7 +377,7 @@ body.intro-lock{overflow:hidden}
     </div>
 
     <div class="stats reveal">
-      <div class="stat rv"><b class="grad">4</b><span>Projects built</span></div>
+      <div class="stat rv"><b class="grad">5</b><span>Projects built</span></div>
       <div class="stat rv"><b class="grad">2</b><span>Club roles at DIU</span></div>
       <div class="stat rv"><b class="grad">1st</b><span>Runner-up, AI Dev Fest 2026</span></div>
       <div class="stat rv"><b class="grad">3</b><span>Languages spoken</span></div>
@@ -467,6 +469,16 @@ body.intro-lock{overflow:hidden}
         <p>The site you're viewing: a responsive, multi-section portfolio I designed and built from scratch, with an animated intro, light and dark themes, and a contact form. Hosted on GitHub Pages.</p>
         <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div>
         <a class="plink" href="https://github.com/iamsajid0010/iamsajid0010.github.io" target="_blank" rel="noopener"><svg class="ic fill"><use href="#i-gh"/></svg>View source on GitHub</a>
+      </article>
+      <article class="card proj rv">
+        <div class="num">05</div>
+        <h3>Campus Buddy</h3>
+        <p>A voice-first university schedule assistant, built as a simulated Alexa+ experience for the Amazon Developer Hackathon. Students ask by voice or text about classes, assignments, exams and campus events, and get spoken answers with time, room and instructor, plus warnings when an event clashes with their routine. Understands English and Bangla keywords, and runs entirely in the browser.</p>
+        <div class="stack"><span>JavaScript</span><span>Web Speech API</span><span>HTML</span><span>CSS</span></div>
+        <div class="plinks">
+          <a class="plink" href="https://iamsajid0010.github.io/campus-buddy/" target="_blank" rel="noopener"><svg class="ic"><use href="#i-ext"/></svg>Live demo</a>
+          <a class="plink" href="https://github.com/iamsajid0010/campus-buddy" target="_blank" rel="noopener"><svg class="ic fill"><use href="#i-gh"/></svg>View source on GitHub</a>
+        </div>
       </article>
     </div>
   </div>

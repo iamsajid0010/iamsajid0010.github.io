@@ -177,6 +177,9 @@ nav ul a.nav-cta:hover{background:var(--cta-hover)}
 
 .plink{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:.9rem;font-weight:500;margin-top:16px;align-self:flex-start}
 .plink:hover{text-decoration:underline}
+.plinks{display:flex;flex-wrap:wrap;gap:8px 24px}
+.plinks .plink{margin-top:0}
+.proj.feature{grid-column:1/-1;border-color:var(--soft-bd)}
 .plink .ic{width:16px;height:16px}
 /* timeline */
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px}
@@ -425,7 +428,7 @@ body.intro-lock{overflow:hidden}
     </div>
 
     <div class="stats reveal">
-      <div class="stat rv"><b class="grad" data-count="4">4</b><span>Projects built</span></div>
+      <div class="stat rv"><b class="grad" data-count="5">5</b><span>Projects built</span></div>
       <div class="stat rv"><b class="grad" data-count="2">2</b><span>Club roles at DIU</span></div>
       <div class="stat rv"><b class="grad" data-count="1" data-suffix="st">1st</b><span>Runner-up, AI Dev Fest 2026</span></div>
       <div class="stat rv"><b class="grad" data-count="3">3</b><span>Languages spoken</span></div>
@@ -493,26 +496,36 @@ body.intro-lock{overflow:hidden}
     <h2>Selected work</h2>
     <p class="sub">Academic and personal projects that apply what I've learned to real problems.</p></div>
     <div class="grid gp">
+      <article class="card proj feature rv">
+        <div class="num">01 &middot; FEATURED</div>
+        <h3>Campus Buddy</h3>
+        <p>A voice-first university schedule assistant, built with HTML and JavaScript using the Web Speech API so students can use it by voice.</p>
+        <div class="stack"><span>HTML</span><span>JavaScript</span><span>Web Speech API</span></div>
+        <div class="plinks">
+          <a class="plink" href="https://iamsajid0010.github.io/campus-buddy" target="_blank" rel="noopener"><svg class="ic"><use href="#i-up"/></svg>Live demo</a>
+          <a class="plink" href="https://github.com/iamsajid0010/campus-buddy" target="_blank" rel="noopener"><svg class="ic fill"><use href="#i-gh"/></svg>Source code</a>
+        </div>
+      </article>
       <article class="card proj rv">
-        <div class="num">01</div>
+        <div class="num">02</div>
         <h3>Hotel Management System</h3>
         <p>A hotel management system for room booking and customer management, backed by a MySQL data layer.</p>
         <div class="stack"><span>Java</span><span>MySQL</span></div>
       </article>
       <article class="card proj rv">
-        <div class="num">02</div>
+        <div class="num">03</div>
         <h3>Image Rating System</h3>
         <p>A platform where users can upload and rate images, with backend data handling.</p>
         <div class="stack"><span>Web</span><span>Backend</span></div>
       </article>
       <article class="card proj rv">
-        <div class="num">03</div>
+        <div class="num">04</div>
         <h3>Hospital Emergency Queue Management</h3>
         <p>Manages patient queues in a hospital emergency department, prioritizing cases by urgency and tracking waiting status.</p>
         <div class="stack"><span>Queues</span><span>Priority scheduling</span></div>
       </article>
       <article class="card proj rv">
-        <div class="num">04</div>
+        <div class="num">05</div>
         <h3>Personal Portfolio Website</h3>
         <p>The site you're viewing: a responsive, multi-section portfolio I designed and built from scratch, with an animated intro, light and dark themes, and a contact form. Hosted on GitHub Pages.</p>
         <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div>

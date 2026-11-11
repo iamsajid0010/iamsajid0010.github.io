@@ -227,10 +227,11 @@ footer .container{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-bet
 #toTop:hover{color:var(--accent);border-color:var(--hover-bd)}
 
 /* ---- professional motion ---- */
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 .ambient{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
-.ambient i{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform}
-.ambient i:nth-child(1){width:560px;height:560px;left:-140px;top:-120px;background:var(--amb1);animation:drift1 24s ease-in-out infinite alternate}
-.ambient i:nth-child(2){width:500px;height:500px;right:-140px;top:32%;background:var(--amb2);animation:drift2 28s ease-in-out infinite alternate}
+.ambient i{position:absolute;border-radius:50%;will-change:transform}
+.ambient i:nth-child(1){width:760px;height:760px;left:-240px;top:-220px;background:radial-gradient(closest-side,var(--amb1),transparent);animation:drift1 24s ease-in-out infinite alternate}
+.ambient i:nth-child(2){width:700px;height:700px;right:-240px;top:30%;background:radial-gradient(closest-side,var(--amb2),transparent);animation:drift2 28s ease-in-out infinite alternate}
 @keyframes drift1{to{transform:translate(140px,180px) scale(1.15)}}
 @keyframes drift2{to{transform:translate(-160px,-130px) scale(1.1)}}
 
@@ -339,6 +340,7 @@ body.intro-lock{overflow:hidden}
   .timeline::before{transform:none !important}
   .portrait img{clip-path:none !important}
   .ambient i{animation:none !important}
+  #bg{display:none}
   #intro *,#intro::before,#intro::after{opacity:1 !important;transform:none !important}
   .i-line{width:200px !important}
 }
@@ -374,6 +376,7 @@ body.intro-lock{overflow:hidden}
   <div class="i-bar" id="introBar"></div>
 </div>
 
+<canvas id="bg" aria-hidden="true"></canvas>
 <div class="ambient" aria-hidden="true"><i></i><i></i></div>
 <div id="progress"></div>
 
@@ -750,6 +753,75 @@ body.intro-lock{overflow:hidden}
     function next(){const n=alts.shift();if(n)img.src='assets/'+n;else img.parentNode.remove();}
     img.addEventListener('error',next);
     if(img.complete&&img.naturalWidth===0)next();
+  })();
+
+  // starfield: slow twinkling star dust with depth, soft links, cursor glow and a rare shooting star
+  (function(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    const c=document.getElementById('bg'),x=c.getContext('2d');
+    let W,H,stars=[],run=true,shoot=null,nextShoot=performance.now()+3500;
+    const mouse={x:-9999,y:-9999};
+    const root=document.documentElement;
+    function size(){
+      const d=Math.min(window.devicePixelRatio||1,2);
+      W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);
+      const n=Math.min(95,Math.max(28,Math.floor(W*H/16000)));
+      stars=Array.from({length:n},()=>{
+        const depth=Math.random();
+        return {x:Math.random()*W,y:Math.random()*H,depth,
+          r:.5+depth*1.4,vx:(Math.random()-.5)*.1,vy:(Math.random()-.5)*.1,
+          ph:Math.random()*6.283,sp:.4+Math.random()*1.1,warm:Math.random()<.22};
+      });
+    }
+    addEventListener('resize',size);size();
+    addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY},{passive:true});
+    document.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-9999});
+    document.addEventListener('visibilitychange',()=>{run=!document.hidden;if(run)requestAnimationFrame(draw)});
+    function draw(now){
+      if(!run)return;
+      const light=root.dataset.theme==='light';
+      const gold=light?'29,78,216':'96,165,250',warm=light?'30,64,175':'226,240,255';
+      const gain=light?.55:1;
+      x.clearRect(0,0,W,H);
+      const sy=scrollY,t=now/1000;
+      const pts=stars.map(p=>{
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.x<-10)p.x=W+10;else if(p.x>W+10)p.x=-10;
+        if(p.y<-10)p.y=H+10;else if(p.y>H+10)p.y=-10;
+        let py=(p.y-sy*(.05+p.depth*.16))%H;if(py<0)py+=H;
+        const a=(.32+.68*(.5+.5*Math.sin(t*p.sp+p.ph)))*(.35+p.depth*.65)*gain;
+        return {x:p.x,y:py,r:p.r,a,warm:p.warm};
+      });
+      // soft links between near stars
+      for(let i=0;i<pts.length;i++){
+        for(let j=i+1;j<pts.length;j++){
+          const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.hypot(dx,dy);
+          if(d<125){x.strokeStyle='rgba('+gold+','+(.13*(1-d/125)*gain)+')';x.lineWidth=.7;x.beginPath();x.moveTo(pts[i].x,pts[i].y);x.lineTo(pts[j].x,pts[j].y);x.stroke();}
+        }
+        const mx=pts[i].x-mouse.x,my=pts[i].y-mouse.y,md=Math.hypot(mx,my);
+        if(md<170){x.strokeStyle='rgba('+gold+','+(.3*(1-md/170)*gain)+')';x.lineWidth=.8;x.beginPath();x.moveTo(pts[i].x,pts[i].y);x.lineTo(mouse.x,mouse.y);x.stroke();}
+      }
+      // the stars themselves
+      for(const p of pts){
+        const col=p.warm?warm:gold;
+        if(p.r>1.25){const g=x.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*5);g.addColorStop(0,'rgba('+col+','+(p.a*.35)+')');g.addColorStop(1,'rgba('+col+',0)');x.fillStyle=g;x.beginPath();x.arc(p.x,p.y,p.r*5,0,6.283);x.fill();}
+        x.fillStyle='rgba('+col+','+p.a+')';x.beginPath();x.arc(p.x,p.y,p.r,0,6.283);x.fill();
+      }
+      // rare shooting star
+      if(!shoot&&now>nextShoot){
+        shoot={x:W*(.45+Math.random()*.5),y:-20,vx:-6.5,vy:3.6,life:0};
+      }
+      if(shoot){
+        shoot.x+=shoot.vx;shoot.y+=shoot.vy;shoot.life++;
+        const fade=Math.max(0,1-shoot.life/110),L=95;
+        const g=x.createLinearGradient(shoot.x,shoot.y,shoot.x-shoot.vx*L/7,shoot.y-shoot.vy*L/7);
+        g.addColorStop(0,'rgba('+warm+','+(.85*fade*gain)+')');g.addColorStop(1,'rgba('+gold+',0)');
+        x.strokeStyle=g;x.lineWidth=1.6;x.lineCap='round';x.beginPath();x.moveTo(shoot.x,shoot.y);x.lineTo(shoot.x-shoot.vx*L/7,shoot.y-shoot.vy*L/7);x.stroke();
+        if(shoot.life>110||shoot.x<-150||shoot.y>H+50){shoot=null;nextShoot=now+7000+Math.random()*6000;}
+      }
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
   })();
 
   // scroll progress, active nav link, back-to-top
